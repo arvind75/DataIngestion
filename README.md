@@ -50,20 +50,20 @@ The utility can bring the data into a Raw area that keeps that data in the same 
 
 4) FILE_COMPRESS  Compression technique used on the file format. Keep in mind that some of the fileformats have inbuilt compression like PARQUET uses snappy inbuilt.
 
-CREATE_JOB This is a future enahancement that could create a job/script for each data extraction/refresh. This way, you can schedule these jobs via an external enterprise scheduler.
+5) CREATE_JOB This is a future enahancement that could create a job/script for each data extraction/refresh. This way, you can schedule these jobs via an external enterprise scheduler.
 
-REFRESH_TYP This can have a value of FULL or INCR. The INCR implementation is a future enhancement to implement undate strategy.
+6) REFRESH_TYP This can have a value of FULL or INCR. The INCR implementation is a future enhancement to implement undate strategy.
 
-KRB_EBNABLED Support Kerberos enabled cluster. Future enhancement to implement the program to support secured clusters.
+7) KRB_EBNABLED Support Kerberos enabled cluster. Future enhancement to implement the program to support secured clusters.
 
-ONLY_RAW_PROCESSING You have option to only extract data into the RAW area and not to process it further into Staging, based upon your business needs.
+8) ONLY_RAW_PROCESSING You have option to only extract data into the RAW area and not to process it further into Staging, based upon your business needs.
 
-STAGING_TBL_PROPERTIES You have the ability to set additional table properties based upon data and business needs
+9) STAGING_TBL_PROPERTIES You have the ability to set additional table properties based upon data and business needs
 
-SQOOP_LANDING_PATH Landing path of sqoop, Raw and Staging areas are different. This is done so that proper archival of incoming data can be done in your raw area by date. This required in scenario of recovery where you need to process data from prevoius sqoops.
+10) SQOOP_LANDING_PATH Landing path of sqoop, Raw and Staging areas are different. This is done so that proper archival of incoming data can be done in your raw area by date. This required in scenario of recovery where you need to process data from prevoius sqoops.
 
-DATA_DEL Delimiter for files in case using TEXTFILE format.
+11) DATA_DEL Delimiter for files in case using TEXTFILE format.
 
-HIVE_AUX_JARS_PATH Path for your UDFs jars.
+12) HIVE_AUX_JARS_PATH Path for your UDFs jars.
 
-DBMS_TYP Default Database type from where ingestion happens.
+13) DBMS_TYP Default Database type from where ingestion happens.
