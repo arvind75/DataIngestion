@@ -12,4 +12,6 @@ Before we start executing the project, the following is required
 2) MySQL installation
 3) Create dataload databases
 4) Execute the attached DDL to create the metadata tables for the project
+5) Modify the .env file that stores password for the mysql instance
+6) Keep in mind that the password is encrypted and you need to create an encrypted password with the password script
 5) execute the "Ingest" program
