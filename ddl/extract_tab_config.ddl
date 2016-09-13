@@ -1,0 +1,37 @@
+DROP TABLE IF EXISTS `extract_tab_config`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `extract_tab_config` (
+  `EXTRACT_ID` int(11) DEFAULT NULL,
+  `EXTRACT_NAME` varchar(100) DEFAULT NULL,
+  `CREATE_JOB` char(1) DEFAULT 'N',
+  `SRC_SCHEMA` varchar(100) DEFAULT NULL,
+  `SRC_TAB_NM` varchar(100) DEFAULT NULL,
+  `INTERFACE_NM` varchar(100) DEFAULT NULL,
+  `IS_RAW` char(1) DEFAULT 'Y',
+  `RAW_TAB_NM` varchar(100) DEFAULT NULL,
+  `RAW_FILE_DIR` varchar(300) DEFAULT NULL,
+  `RAW_ARCHIVING` char(1) DEFAULT 'N' COMMENT 'Applicable for REFRESH_TYP as INCR/APPEND when older RAW data is required to archive for future processing',
+  `STG_TAB_NM` varchar(100) DEFAULT NULL,
+  `STG_FILE_DIR` varchar(300) DEFAULT NULL,
+  `REFRESH_TYP` varchar(10) DEFAULT 'FULL' COMMENT 'FULL / APPEND /INCR',
+  `INCR_PK_COL` varchar(100) DEFAULT NULL COMMENT 'Primary Key column for Incremental tables for updates. In case of Composite columns, they should be entereed separated by space',
+  `INCR_TAB_NM` varchar(100) DEFAULT NULL,
+  `INCR_FILE_DIR` varchar(300) DEFAULT NULL,
+  `INCR_COL_NM` varchar(100) DEFAULT NULL COMMENT 'Incremental updates with REFRESH_TYP as INCR/APPEND should have this column populated to extract data from source tables.',
+  `INCR_COL_EQUATION` char(2) DEFAULT NULL,
+  `IS_PARTITION` char(1) DEFAULT NULL,
+  `PARTITION_COL_NM` varchar(100) DEFAULT NULL,
+  `PARALLEL_EXTRACT` char(1) DEFAULT 'N',
+  `EXTRACT_PARALLELISM` int(11) DEFAULT '1',
+  `PARALLEL_SPLITBY` varchar(100) DEFAULT NULL,
+  `QUERY` varchar(500) DEFAULT NULL,
+  `MAP_COLUMNS` varchar(200) DEFAULT NULL,
+  `IMPORT_FILE_FORMAT` varchar(10) DEFAULT 'TEXTFILE',
+  `STG_FILE_FORMAT` varchar(10) DEFAULT 'PARQUET',
+  `FILE_COMPRESS` varchar(1) DEFAULT 'Y',
+  `SERVICE_NM` char(100) DEFAULT NULL,
+  `CREATE_DT` date DEFAULT NULL,
+  `MODIFY_DT` date DEFAULT NULL,
+  `COMMENTS` varchar(300) DEFAULT NULL
+);
