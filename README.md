@@ -6,7 +6,7 @@ The program is written in shell script and has a character based interactive scr
 
 
 
-Before we start executing the project, the following is required
+##Before we start executing the project, the following is required
 
 1) Linux Machine with Bash Shell
 
@@ -23,14 +23,14 @@ Before we start executing the project, the following is required
 5) execute the "Ingest" program
 
 
-Currently Supported RDBMS
+##Currently Supported RDBMS
 
 Oracle
 
 SQL-SERVER
 
 
-Future Enhancement
+##Future Enhancement
 
 DB2 UDB
 
@@ -41,7 +41,7 @@ TERADATA
 
 The utility can bring the data into a Raw area that keeps that data in the same state as the source. The data can then be moved to a STG (Staging) area where you can apply HIVE UDF transformation on the data for consumtion purposes. 
 
-Know the Terms
+##Terms
 1) INTERFACE_NM This is the schema/database name that you want to use for placing the data from different source databases into HIVE.
 
 2) STG_FILE_FORMAT Staging file format for storage. Valid values examples are TEXTFILE, PARQUET, ORC, RC, AVRO
