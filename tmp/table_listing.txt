@@ -1,0 +1,1 @@
+TRAFFIC     0     EXTRACT_TRAFFIC_RECORD                                  TRAFFIC         TRAFFIC_RECORD                                FULL      

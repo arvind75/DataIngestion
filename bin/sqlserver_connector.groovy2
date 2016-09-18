@@ -1,0 +1,57 @@
+@GrabConfig(systemClassLoader=true)
+import groovy.sql.*
+
+static main(args) {
+
+// Four Args
+String user = args[0]    // sqlserver User DB Name
+String pass = args[1]    // sqlserver DB user pass
+String url = args[2]    // ORacle connect URL
+String request = args[3] //Type of request - header/connect/schema/table
+String schema = args [4] //Schema name used for header/table listing
+String table = args [5] //table name used for header requests
+//String file = args [6] //filename in which data gets written
+
+
+
+driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+//driver = "oracle.jdbc.driver.sqlserverDriver"
+
+//this.class.classLoader.rootLoader.URLs.each{ println it }
+
+  if ( request == "connect" )
+  {
+    String sql_txt;
+    Sql.withInstance(url, user, pass, driver) { sql ->
+      sql.eachRow('select top 1 table_name from information_schema.TABLES ' ){ row ->println row.table_name }
+                                            }
+  }
+  if ( request == "header" )
+  {
+String sql_txt;
+println "Column Name,SQL Type,Business Name,Length,Decimal"
+Sql.withInstance(url, user, pass, driver) { sql ->
+//  sql.eachRow('select column_name, data_type,\' \' comments,COALESCE(CHARACTER_MAXIMUM_LENGTH,NUMERIC_PRECISION) length ,COALESCE(NUMERIC_SCALE,\'\') data_scale  from  INFORMATION_SCHEMA.COLUMNS  where table_name =\'trafficMetaData\' and table_schema=\'dbo\'  order by ORDINAL_POSITION'){ row ->      println row.column_name + "," + row.data_type + "," + row.comments  + "," + row.length + "," + row.data_scale }
+
+  sql.eachRow('select column_name, data_type,\' \' comments,COALESCE(CHARACTER_MAXIMUM_LENGTH,NUMERIC_PRECISION) data_length ,COALESCE(NUMERIC_SCALE,\'\') data_scale  from  INFORMATION_SCHEMA.COLUMNS  where table_name =\'' + table + '\' and table_schema=\'' + schema  + '\'  order by ORDINAL_POSITION'){ row ->      println row.column_name + "," + row.data_type + "," + row.comments  + "," + row.data_length + "," + row.data_scale }
+
+  }
+  }
+  
+  if ( request == "table" )
+  {
+    String sql_txt;
+    Sql.withInstance(url, user, pass, driver)
+     { sql -> sql.eachRow('select distinct table_name from information_schema.TABLES where table_schema=' + '\'' + schema +'\'' ){ row ->println row.table_name }
+     }
+  }
+  if ( request == "schema" )
+  {
+  String sql_txt;
+    Sql.withInstance(url, user, pass, driver) 
+     { sql -> sql.eachRow('select distinct table_schema from information_schema.TABLES' ){ row ->println row.table_schema }
+     }
+  
+  }
+  }
+  
